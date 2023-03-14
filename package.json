@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/samitkapoor/url-shortener#readme",
   "dependencies": {
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "mongoose": "^7.0.1",
     "shortid": "^2.2.16"

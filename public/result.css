@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    font-family: system-ui;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+
+    background-color: gainsboro;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    max-width: 800px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    border-radius: 5px;
+
+    background-color: white;
+    padding: 5px 10px;
+
+    font-size: 20px;
+    font-weight: 600;
+    color: grey;
+
+    cursor: pointer;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: grey;
+}
+
+.copy-btn {
+    height: 32px;
+    width: 32px;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    opacity: 0.3;
+    padding: 5px;
+}
+
+.box:hover .copy-btn {
+    opacity: 1;
+}
+
+.copy-btn:hover {
+    opacity: 1;
+    background-color: gainsboro;
+}

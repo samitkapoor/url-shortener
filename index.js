@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 
 const connectToMongoDB = require("./connect");
 const urlRoute = require("./routes/url");
@@ -9,6 +10,9 @@ const PORT = 3000 || process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
+
+app.set("view engine", "ejs");
 
 connectToMongoDB("mongodb://127.0.0.1:27017/short-url").then(() => {
   console.log("Connected to MongoDB");
@@ -16,7 +20,7 @@ connectToMongoDB("mongodb://127.0.0.1:27017/short-url").then(() => {
 
 app.use("/url", urlRoute);
 
-app.get("/:shortId", async (req, res, next) => {
+app.use("/id/:shortId", async (req, res, next) => {
   const shortId = req.params.shortId;
   const entry = await URL.findOneAndUpdate(
     {
@@ -30,6 +34,11 @@ app.get("/:shortId", async (req, res, next) => {
   );
 
   res.redirect(entry.redirectUrl);
+});
+
+app.use("/", (req, res, next) => {
+  res.render("form");
+  // res.render("result", { link: "http://localhost:3000/=g00taL7S6" });
 });
 
 app.listen(PORT, () => {

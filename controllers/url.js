@@ -13,7 +13,7 @@ async function handleGenerateNewShortUrl(req, res, next) {
     visitHistory: [],
   });
 
-  return res.json({ id: shortId });
+  res.render("result", { link: `http://localhost:3000/id/${shortId}` });
 }
 
 async function handleGetAnalytics(req, res, next) {
